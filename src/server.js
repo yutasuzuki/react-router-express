@@ -2,8 +2,10 @@ import express from 'express'
 import React from 'react'
 import ReactDOMServer from 'react-dom/server'
 import BasicExample from './router'
-import Counter from './components/Counter'
 import { StaticRouter } from 'react-router'
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
+import reducer from './reducers'
 
 // init express
 const app = express()
@@ -11,22 +13,24 @@ const app = express()
 // add static path
 app.use(express.static('public'))
 
+const store = createStore(reducer, {})
 
 // add top page routing
 app.get('*', (req, res) => {
   const context = {}
   const elem = ReactDOMServer.renderToString(
-  <StaticRouter
-    location={req.url}
-    context={context}
-  >
-    <BasicExample />
-  </StaticRouter>
-)
-  res.send(temp(elem))
+    <Provider store={store}>
+      <StaticRouter location={req.url} context={context}>
+        <BasicExample />
+      </StaticRouter>
+    </Provider>
+  )
+  const preloadedState = store.getState()
+  console.log(preloadedState)
+  res.send(temp(elem, preloadedState))
 })
 
-const temp = function(elem) {
+const temp = function(elem, preloadedState) {
   return `<!DOCTYPE html>
   <html lang="ja">
     <head>
@@ -35,6 +39,11 @@ const temp = function(elem) {
     <\/head>
     <body>
       <div id="app">${elem}<\/div>
+      <script>
+        // WARNING: See the following for security issues around embedding JSON in HTML:
+        // http://redux.js.org/docs/recipes/ServerRendering.html#security-considerations
+        window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(/</g, '\\u003c')}
+      <\/script>
       <script type="text\/javascript" src="\/client.js"><\/script>
     <\/body>
   <\/html>`;

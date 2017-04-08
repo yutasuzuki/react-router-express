@@ -4,18 +4,18 @@ import {
   Link,
   hashHistory
 } from 'react-router-dom'
-import  history from 'history';
-// const  historyObj  =  historycreateMemoryHistory（）;
+import Top from './pages/Top'
 
 const BasicExample = () => (
   <div>
     <ul>
       <li><Link to="/">Home</Link></li>
+      <li><Link to="/top">TOP</Link></li>
       <li><Link to="/about">About</Link></li>
       <li><Link to="/topics">Topics</Link></li>
     </ul>
-    <hr/>
     <Route exact={true} path="/" component={Home}/>
+    <Route path="/top" component={Top}/>
     <Route path="/about" component={About}/>
     <Route path="/topics" component={Topics}/>
   </div>
