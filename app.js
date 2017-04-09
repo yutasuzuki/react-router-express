@@ -6,12 +6,17 @@ import { StaticRouter } from 'react-router'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import reducer from './assets/js/reducers'
+import containers from './controllers'
+
 
 // init express
 const app = express()
 
 // add static path
 app.use(express.static('public'))
+
+// add API path
+app.use('/api/', containers)
 
 const store = createStore(reducer, {})
 
@@ -51,19 +56,6 @@ const createLayout = function(elem, preloadedState) {
   <\/body>
 <\/html>`;
 }
-
-const ApiRouter = express.Router();
-
-ApiRouter.use(function(req, res, next) {
-    console.log('Something is happening.');
-    next();
-});
-
-ApiRouter.get('/', function(req, res) {
-    res.json({ message: 'Successfully Posted a test message.' });
-});
-
-app.use('/api/', ApiRouter);
 
 // start listen
 app.listen(3000, () => {
