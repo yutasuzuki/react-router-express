@@ -2,11 +2,11 @@ var webpack = require('webpack');
 
 module.exports = {
   entry: {
-    client: "./src/client.js",
+    client: "./assets/js/client.js",
   },
   output: {
     filename: '[name].js',
-    path: __dirname + "/public",
+    path: __dirname + "/public/js",
   },
   module: {
     loaders: [

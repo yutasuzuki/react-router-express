@@ -6,7 +6,6 @@
   "dependencies": {
     "babel-polyfill": "^6.23.0",
     "express": "^4.15.2",
-    "history": "^4.6.1",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-redux": "^5.0.3",
@@ -15,7 +14,7 @@
     "redux-saga": "^0.14.6"
   },
   "scripts": {
-    "start": "webpack && node_modules/.bin/babel-node src/server.js"
+    "start": "webpack && node_modules/.bin/babel-node app.js"
   },
   "devDependencies": {
     "babel-cli": "^6.24.0",
