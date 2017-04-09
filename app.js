@@ -7,9 +7,6 @@ import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import reducer from './assets/js/reducers'
 import containers from './controllers'
-
-
-// init express
 const app = express()
 
 // add static path
