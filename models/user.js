@@ -4,11 +4,18 @@ class User {
   }
 
   get(id, cb) {
-    cb(null, {id:id, text: 'Very nice example'})
+    cb(null, {id, text: 'Very nice example'})
   }
 
   all(cb) {
-    cb(null, [])
+    cb(null, [{
+      id: 1,
+      text: 'sample1',
+    },
+    {
+      id: 2,
+      text: 'sample2',
+    }])
   }
 
   allByUser(user, cb) {
