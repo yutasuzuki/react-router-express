@@ -8,14 +8,14 @@ import { Provider } from 'react-redux'
 import reducer from './assets/js/reducers'
 import containers from './controllers'
 const app = express()
+// TODO: configureStoreからimportするように変更
+const store = createStore(reducer, {})
 
 // add static path
 app.use(express.static('public'))
 
 // add API path
 app.use('/api/', containers)
-
-const store = createStore(reducer, {})
 
 // add top page routing
 app.get(/^(?!\/api\/).*$/, (req, res) => {
