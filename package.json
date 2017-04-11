@@ -16,7 +16,8 @@
     "redux-saga": "^0.14.6"
   },
   "scripts": {
-    "start": "webpack && node_modules/.bin/babel-node app.js"
+    "serve": "node_modules/.bin/babel-node app.js",
+    "start": "webpack && npm run serve"
   },
   "devDependencies": {
     "babel-cli": "^6.24.0",
