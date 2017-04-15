@@ -11,6 +11,14 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onClickModal: () => {
       dispatch(incrementAsync())
+    },
+    onGetAllUser: () => {
+      fetch(`/api/users/12432`).then((response) => {
+        response.json().then((json) => {
+          console.log(json)
+          dispatch(getAllUsers(json))
+        })
+      })
     }
   }
 }

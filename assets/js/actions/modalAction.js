@@ -1,17 +1,19 @@
 // import axios from 'axios'
 
-export const toggleModal = () => {
-  return {
-    type: 'TOGGLE_MODAL'
-  }
-}
+// export const toggleModal = () => {
+//   return {
+//     type: 'TOGGLE_MODAL'
+//   }
+// }
+//
 
-export const getAllUsers = (users) => {
-  return {
-    type: 'GET_ALL_USERS',
-    users
-  }
-}
+
+// export const getAllUsers = (users) => {
+//   return {
+//     type: 'GET_ALL_USERS',
+//     users
+//   }
+// }
 
 // TODO: アクションで非同期通信をするなとエラーになる
 // export const toggleModal = () => {
@@ -24,6 +26,12 @@ export const getAllUsers = (users) => {
 //
 
 import { createAction } from "redux-actions";
+
+export const TOGGLE_MODAL = 'TOGGLE_MODAL';
+export const toggleModal = createAction(TOGGLE_MODAL);
+
+export const GET_ALL_USERS = "GET_ALL_USERS";
+export const getAllUsers = createAction(GET_ALL_USERS);
 
 export const INCREMENT = "INCREMENT";
 export const DECREMENT = "DECREMENT";

@@ -1,25 +1,16 @@
 import 'babel-polyfill'
 // import { takeLatest, takeEvery, delay } from "redux-saga";
 // import { put, call } from 'redux-saga/effects'
-// import { getAllUsers } from '../actions/modalAction'
-//
-// // TODO: 初回しか呼ばれていない
+// import { getAllUsers, GET_ALL_USERS } from '../actions/modalAction'
+
+// TODO: 初回しか呼ばれていない
 // export function* userAll() {
-//   yield call(delay, 1000);
-//   const users = yield getUsers()
-//   yield put(getAllUsers())
+//   const users = yield call(getUsers);
+//   yield put(getAllUsers(users))
 // }
 //
-export function* getUsers() {
-  return fetch(`/api/users/12`).then((response) => {
-    return response.json().then((json) => {
-      return json
-    })
-  })
-}
-//
 // export default function* rootSaga() {
-//   yield* takeEvery(getAllUsers, userAll);
+//   yield* takeEvery(GET_ALL_USERS, userAll);
 // }
 
 import { takeEvery, delay } from "redux-saga";
@@ -29,10 +20,16 @@ import {
   increment
 } from "../actions/modalAction";
 
+export function getUsers() {
+  return fetch(`/api/users/12`).then((response) => {
+    return response.json().then((json) => {
+      return json
+    })
+  })
+}
+
 export function* incrementAsync() {
-  yield call(delay, 1000);
-  const users = yield getUsers()
-  console.log(users)
+  const users = yield call(getUsers);
   yield put(increment(users));
 }
 
