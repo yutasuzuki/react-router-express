@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { getAllUsers, incrementAsync } from '../actions/modalAction'
+import { signIn, signOut } from '../actions/auth'
 import HeaderComponent from '../components/Header'
 
 const mapStateToProps = (state) => {
@@ -9,6 +10,12 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    onSubmitSignIn: () => {
+      dispatch(signIn())
+    },
+    onSubmitSignOut: () => {
+      dispatch(signOut())
+    },
     onClickModal: () => {
       dispatch(incrementAsync())
     },

@@ -1,17 +1,17 @@
 import express from 'express'
-import User from '../models/user'
+import UserModel from '../models/UserModel'
 
 const router = express.Router()
-const UserModel = new User();
+const user = new UserModel();
 
 router.get('/', function(req, res) {
-  UserModel.all(function (err, user) {
+  user.all(function (err, user) {
     res.json({user})
   })
 })
 
 router.get('/:id', function(req, res) {
-  UserModel.get(req.params.id, function (err, user) {
+  user.get(req.params.id, function (err, user) {
     res.json({user})
   })
 })

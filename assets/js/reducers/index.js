@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux'
+import auth from './auth'
 import modal from './modal'
 import user from './user'
 
@@ -17,8 +18,9 @@ function counter(state = 0, action) {
 }
 
 const reducer = combineReducers({
+  auth,
   modal,
-  user
+  user,
 });
 
 export default reducer
