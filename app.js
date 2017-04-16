@@ -8,6 +8,8 @@ import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import reducer from './assets/js/reducers'
 import controllers from './controllers'
+import path from 'path'
+
 const app = express()
 // TODO: configureStoreからimportするように変更
 const store = createStore(reducer, {})
@@ -64,6 +66,14 @@ const createLayout = function(elem, preloadedState) {
   <\/body>
 <\/html>`;
 }
+
+app.get('/',(req, res) => {
+  res.sendFile(`${__dirname}/public/html/index.html`)
+})
+
+app.get('/signin',(req, res) => {
+  res.sendFile(`${__dirname}/public/html/signin.html`)
+})
 
 // start listen
 app.listen(3000, () => {
