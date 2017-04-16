@@ -2,7 +2,7 @@ var webpack = require('webpack');
 
 module.exports = {
   entry: {
-    client: "./assets/js/client.js",
+    client: "./assets/js/admin/client.js",
   },
   output: {
     filename: '[name].js',
