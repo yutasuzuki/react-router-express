@@ -10,7 +10,7 @@ const store = configureStore(preloadedState)
 
 render(
   <Provider store={store}>
-    <BrowserRouter>
+    <BrowserRouter basename='/admin'>
       <Router />
     </BrowserRouter>
   </Provider>,

@@ -17,23 +17,23 @@ app.use(express.static('public'))
 
 // session
 app.use(session({
-    secret: 'lunchTimer',
-    saveUninitialized: true,
-    resave: false,
-    cookie: {
-        maxAge: null
-    }
+  secret: 'lunchTimer',
+  saveUninitialized: true,
+  resave: false,
+  cookie: {
+    maxAge: null
+  }
 }))
 
 // add API path
 app.use('/api/', controllers)
 
-// add top page routing
-app.get(/^(?!\/api\/).*$/, (req, res) => {
+// add react routing
+app.get(/^\/admin/, (req, res) => {
   const context = {}
   const elem = ReactDOMServer.renderToString(
     <Provider store={store}>
-      <StaticRouter location={req.url} context={context}>
+      <StaticRouter location={req.url} context={context} basename='/admin'>
         <Router />
       </StaticRouter>
     </Provider>
@@ -47,7 +47,7 @@ const createLayout = function(elem, preloadedState) {
 <html lang='ja'>
   <head>
     <meta charset='utf-8'>
-    <title>Palette<\/title>
+    <title>Palette - 管理画面 - <\/title>
   <\/head>
   <body>
     <div id='app'>${elem}<\/div>
