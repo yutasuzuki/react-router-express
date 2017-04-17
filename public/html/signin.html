@@ -20,50 +20,19 @@
 <main class='main'>
   <div id='content'></div>
   <div class='c-form'>
-    <p class='c-form__row'>
-      <label for='js-store-mail' class=''>E-Mail</label>
-      <input type='email' id='js-store-mail' required='true' accesskey='n' aria-required='true'>
-    </p>
-    <p class='c-form__row'>
-      <label for='js-store-password' class=''>Password</label>
-      <input type='password' id='js-store-password' required='true' accesskey='n' aria-required='true'>
-    </p>
-    <button class='c-btn c-btn--prime' id='js-signin'>sign in</button>
+    <form method='post' action='/admin'>
+      <p class='c-form__row'>
+        <label for='js-store-mail' class=''>E-Mail</label>
+        <input type='email' name='email' id='js-store-mail'>
+      </p>
+      <p class='c-form__row'>
+        <label for='js-store-password' class=''>Password</label>
+        <input type='password' name='password' id='js-store-password'>
+      </p>
+      <button  class='c-btn c-btn--prime' id='js-signin'>sign in</button>
+    </form>
   </div>
 </main>
-<script>
-  const signin = document.getElementById('js-signin');
-  signin.addEventListener('click', () => {
-    const mail = document.getElementById('js-store-mail').value;
-    const password = document.getElementById('js-store-password').value;
-    fetch(`/signin`, {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        mail: mail,
-        password: password
-      })
-    }).then((response) => {
-      return response.json();
-    }).then((data) => {
-      console.log(data);
-      const content = document.getElementById('content');
-      if (!data.Error) {
-        content.innerHTML = `
-        ID：${data.Value.ID}<br>
-        name：${data.Value.name}<br>
-        Mail：${data.Value.mail}<br>
-        PASSWORD：${data.Value.password}<br>
-        作成日：${data.Value.CreatedAt}<br>
-        更新日：${data.Value.UpdatedAt}<br>`;
-      } else {
-        content.innerHTML = 'メールアドレスまたはパスワードが正しくありません。';
-      }
-    });
-  });
-</script>
+
 </body>
 </html>

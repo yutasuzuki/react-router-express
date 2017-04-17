@@ -8,7 +8,9 @@ import { Provider } from 'react-redux'
 import Router from './assets/js/admin/router'
 import reducer from './assets/js/admin/reducers'
 import controllers from './controllers'
-import path from 'path'
+import bodyParser from 'body-parser'
+import signInHandler from './middlewares/signInHandler'
+import sessionHandler from './middlewares/sessionHandler'
 
 const app = express()
 // TODO: configureStoreからimportするように変更
@@ -29,9 +31,13 @@ app.use(session({
 
 // add API path
 app.use('/api/', controllers)
+app.use(bodyParser.urlencoded({ extended: true }))
 
 // add react routing
-app.get(/^\/admin/, (req, res) => {
+app.post(/^\/admin/, signInHandler, adminHandler)
+app.get(/^\/admin/, sessionHandler, adminHandler)
+
+function adminHandler (req, res) {
   const context = {}
   const elem = ReactDOMServer.renderToString(
     <Provider store={store}>
@@ -42,7 +48,7 @@ app.get(/^\/admin/, (req, res) => {
   )
   const preloadedState = store.getState()
   res.send(createLayout(elem, preloadedState))
-})
+}
 
 const createLayout = function(elem, preloadedState) {
   return `<!DOCTYPE html>
@@ -66,6 +72,7 @@ const createLayout = function(elem, preloadedState) {
   <\/body>
 <\/html>`;
 }
+
 
 app.get('/',(req, res) => {
   res.sendFile(`${__dirname}/public/html/index.html`)
