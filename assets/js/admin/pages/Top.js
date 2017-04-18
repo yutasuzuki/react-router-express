@@ -8,17 +8,13 @@ const Top = () => (
     <div className={'content'}>
       <div className={'container'}>
         <ul>
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/admin">admin</Link></li>
-          <li><Link to="/about">About</Link></li>
-          <li><Link to="/topics">Topics</Link></li>
+          <li><Link to="/">TOP</Link></li>
+          <li><Link to="/dashboard">dashboard</Link></li>
+          <li><Link to="/account">account</Link></li>
         </ul>
         <div className={'main'}>
           <h1>TOP</h1>
         </div>
-        <aside className={'aside'}>
-          aside
-        </aside>
       </div>
     </div>
   </div>
