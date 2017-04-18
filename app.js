@@ -68,7 +68,7 @@ const createLayout = function(elem, preloadedState) {
       ele.parentNode.removeChild(ele);
     }());
     <\/script>
-    <script type='text\/javascript' src='\/js\/client.js'><\/script>
+    <script src='\/js\/client.js'><\/script>
   <\/body>
 <\/html>`;
 }
