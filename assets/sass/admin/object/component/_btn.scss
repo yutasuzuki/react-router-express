@@ -6,8 +6,8 @@
   border: 0;
   overflow: hidden;
   background-color: $link-color;
-  transition: all 0.3s ease-out;
-  -webkit-backface-visibility: hidden;
+  transition: background-color .3s ease-out;
+  backface-visibility: hidden;
   cursor: pointer;
 
   &:hover {

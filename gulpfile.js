@@ -10,7 +10,7 @@ const autoprefixer = require('autoprefixer');
 
 const paths = {
   sass: {
-    'src': './assets/sass/*.scss',
+    'src': './assets/sass/**/*.scss',
     'dist': './public/css'
   },
   ejs: {

@@ -20,8 +20,9 @@
     "redux-saga": "^0.14.6"
   },
   "scripts": {
-    "serve": "node_modules/.bin/babel-node app.js",
-    "start": "webpack && npm run serve"
+    "build": "gulp ejs && gulp style && webpack",
+    "serve": "node_modules/.bin/babel-node server.js",
+    "start": "npm run build && npm run serve"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.7",

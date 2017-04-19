@@ -56,6 +56,7 @@ const createLayout = function(elem, preloadedState) {
   <head>
     <meta charset='utf-8'>
     <title>Palette - 管理画面 - <\/title>
+    <link href='/css/admin/style.css' rel='stylesheet'>
   <\/head>
   <body>
     <div id='app'>${elem}<\/div>
@@ -68,7 +69,7 @@ const createLayout = function(elem, preloadedState) {
       ele.parentNode.removeChild(ele);
     }());
     <\/script>
-    <script src='\/js\/client.js'><\/script>
+    <script src='\/js\/app.js'><\/script>
   <\/body>
 <\/html>`;
 }
