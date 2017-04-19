@@ -16,9 +16,21 @@ import Account from './pages/Account'
 const GlobalRouter = () => {
   return (
     <div>
-      <Route exact={true} path="/" component={Top}/>
-      <Route path="/dashboard" component={Dashboard}/>
-      <Route path="/Account" component={Account}/>
+      <Header />
+      <div className={'content'}>
+        <div className={'container'}>
+          <ul>
+            <li><Link to="/">TOP</Link></li>
+            <li><Link to="/dashboard">dashboard</Link></li>
+            <li><Link to="/account">account</Link></li>
+          </ul>
+          <div className={'main'}>
+            <Route exact={true} path="/" component={Top}/>
+            <Route path="/dashboard" component={Dashboard}/>
+            <Route path="/Account" component={Account}/>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }
