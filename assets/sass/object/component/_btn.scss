@@ -1,0 +1,25 @@
+.c-btn {
+  font-size: 14px;
+  height: 45px;
+  line-height: 45px;
+  padding: 0 35px;
+  border: 0;
+  overflow: hidden;
+  background-color: $link-color;
+  transition: all 0.3s ease-out;
+  -webkit-backface-visibility: hidden;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $hover-color;
+  }
+}
+
+.c-btn--prime {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: #fff;
+  border-radius: 24px;
+}

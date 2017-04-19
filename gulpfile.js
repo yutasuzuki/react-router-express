@@ -1,6 +1,7 @@
 const gulp = require('gulp');
 const plumber = require('gulp-plumber');
 const sass = require('gulp-sass');
+const sassGlob = require("gulp-sass-glob");
 const postcss = require('gulp-postcss');
 const sassLint = require('gulp-sass-lint');
 const ejs = require('gulp-ejs');
@@ -29,6 +30,7 @@ gulp.task('style', function() {
     .pipe(sassLint())
     .pipe(sassLint.format())
     .pipe(sassLint.failOnError())
+    .pipe(sassGlob())
     .pipe(sass())
     .pipe(postcss(processors))
     .pipe(gulp.dest(paths.sass.dist))

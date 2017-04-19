@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang='ja'>
+<%- include('./components/_head'); %>
+<body>
+<%- include('./components/_header'); %>
+<main class='main'>
+  <div id='content'></div>
+  <div class='c-form'>
+    <form method='post' action='/admin'>
+      <p class='c-form__row'>
+        <label for='js-store-mail' class=''>E-Mail</label>
+        <input type='email' name='email' id='js-store-mail'>
+      </p>
+      <p class='c-form__row'>
+        <label for='js-store-password' class=''>Password</label>
+        <input type='password' name='password' id='js-store-password'>
+      </p>
+      <button  class='c-btn c-btn--prime' id='js-signin'>sign in</button>
+    </form>
+  </div>
+</main>
+
+</body>
+</html>
