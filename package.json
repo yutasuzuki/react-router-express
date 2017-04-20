@@ -21,6 +21,7 @@
   },
   "scripts": {
     "build": "gulp ejs && gulp style && webpack",
+    "script": "webpack",
     "serve": "node_modules/.bin/babel-node server.js",
     "start": "npm run build && npm run serve"
   },

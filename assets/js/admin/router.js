@@ -17,20 +17,22 @@ const GlobalRouter = () => {
   return (
     <div>
       <Header />
-      <div className={'content'}>
+      <nav>
+        <ul>
+          <li><Link to="/">TOP</Link></li>
+          <li><Link to="/dashboard">dashboard</Link></li>
+          <li><Link to="/account">account</Link></li>
+        </ul>
+      </nav>
+      <main className={'main'}>
         <div className={'container'}>
-          <ul>
-            <li><Link to="/">TOP</Link></li>
-            <li><Link to="/dashboard">dashboard</Link></li>
-            <li><Link to="/account">account</Link></li>
-          </ul>
           <div className={'main'}>
             <Route exact={true} path="/" component={Top}/>
             <Route path="/dashboard" component={Dashboard}/>
             <Route path="/Account" component={Account}/>
           </div>
         </div>
-      </div>
+      </main>
     </div>
   )
 }

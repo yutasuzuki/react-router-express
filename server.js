@@ -56,6 +56,7 @@ const createLayout = function(elem, preloadedState) {
   <head>
     <meta charset='utf-8'>
     <title>Palette - 管理画面 - <\/title>
+    <link href='//fonts.googleapis.com/css?family=Lato:100,300,400,900' rel='stylesheet'>
     <link href='/css/admin/style.css' rel='stylesheet'>
   <\/head>
   <body>

@@ -11,7 +11,7 @@ class Header extends Component {
     return (
       <header className={'header'}>
         <div className={'header__inner'}>
-          <h1>ページタイトル</h1>
+          <h1 className={'header__title'}>Palette</h1>
         </div>
       </header>
     )
