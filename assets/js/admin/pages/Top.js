@@ -4,11 +4,7 @@ import Header from '../containers/Header'
 
 const Top = () => (
   <div>
-    <div className={'content'}>
-      <div className={'main'}>
-        <h1>TOP!!</h1>
-      </div>
-    </div>
+    <h1>TOP!!</h1>
   </div>
 )
 

@@ -12,6 +12,7 @@ import Header from './containers/Header'
 import Top from './pages/Top'
 import Dashboard from './pages/Dashboard'
 import Account from './pages/Account'
+import User from './pages/User'
 
 const GlobalRouter = () => {
   return (
@@ -19,19 +20,16 @@ const GlobalRouter = () => {
       <Header />
       <nav>
         <ul>
-          <li><Link to="/">TOP</Link></li>
           <li><Link to="/dashboard">dashboard</Link></li>
           <li><Link to="/account">account</Link></li>
+          <li><Link to="/user">user</Link></li>
         </ul>
       </nav>
       <main className={'main'}>
-        <div className={'container'}>
-          <div className={'main'}>
-            <Route exact={true} path="/" component={Top}/>
-            <Route path="/dashboard" component={Dashboard}/>
-            <Route path="/Account" component={Account}/>
-          </div>
-        </div>
+        <Route exact={true} path="/" component={Top}/>
+        <Route path="/dashboard" component={Dashboard}/>
+        <Route path="/Account" component={Account}/>
+        <Route path="/user" component={User}/>
       </main>
     </div>
   )
