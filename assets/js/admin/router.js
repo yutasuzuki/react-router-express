@@ -18,7 +18,7 @@ const GlobalRouter = () => {
   return (
     <div>
       <Header />
-      <nav>
+      <nav className='c-global-nav'>
         <ul>
           <li><Link to="/dashboard">dashboard</Link></li>
           <li><Link to="/account">account</Link></li>

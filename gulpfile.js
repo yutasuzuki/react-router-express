@@ -24,7 +24,7 @@ const processors = [
   cssnano()
 ];
 
-gulp.task('style', function() {
+gulp.task('style', () => {
   return gulp.src(paths.sass.src)
     .pipe(plumber())
     .pipe(sassLint())
@@ -36,7 +36,7 @@ gulp.task('style', function() {
     .pipe(gulp.dest(paths.sass.dist))
 });
 
-gulp.task('ejs', function() {
+gulp.task('ejs', () => {
   return gulp.src(paths.ejs.src)
     .pipe(plumber())
     .pipe(ejs({},{},{'ext': '.html'}))

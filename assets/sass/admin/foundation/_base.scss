@@ -2,11 +2,17 @@ body {
   font-family: 'Lato', sans-serif;
   font-weight: 400;
   color: $dafault-text-color;
+  background-color: #f6f6f6;
 }
 
 a {
   transition: background-color .3s ease-out;
   backface-visibility: hidden;
+  color: $dafault-text-color;
+
+  &:visited {
+    color: $dafault-text-color;
+  }
 }
 
 input,
