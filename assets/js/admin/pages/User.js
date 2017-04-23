@@ -5,7 +5,9 @@ import UserList from '../components/UserList'
 const User = () => (
   <div>
     <h1>User!!</h1>
-    <UserList />
+    <ul>
+      <UserList />
+    </ul>
   </div>
 )
 
