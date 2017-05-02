@@ -11,8 +11,8 @@ router.get('/', function(req, res) {
 })
 
 router.get('/:id', function(req, res) {
-  user.get(req.params.id, function (err, user) {
-    res.json({user})
+  user.get(req.params.id, function (err, users) {
+    res.json({users})
   })
 })
 

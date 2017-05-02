@@ -1,6 +1,13 @@
 .c-listUser {
+  display: flex;
+  border: 1px solid #eee;
+  padding: 10px;
+
   &__cell {
-    &--thumbnail {
+    padding-right: 10px;
+
+    &:last-child {
+      padding-right: 0;
     }
   }
 }

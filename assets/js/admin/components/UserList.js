@@ -6,26 +6,14 @@ class UserList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      users:[
-        {
-          id: 1,
-          name: '鈴木雄太',
-          thumbnail: {
-            src: 'https://pbs.twimg.com/profile_images/657430343755010048/lnINDXvY_normal.jpg'
-          },
-          point: {
-            total: 24,
-            last: 3,
-          },
-          card: {
-            finished: 2,
-          },
-          updateAt: '2017/4/20',
-        },
-      ]
+      users:[]
     }
+
+  }
+
+  componentWillMount() {
     axios.get('/api/users').then((res) => {
-      console.log(res)
+      this.setState({ users: res.data.user});
     })
   }
 
@@ -50,14 +38,23 @@ class UserItem extends Component {
     return (
       <li className='c-listUser'>
         <div className='c-listUser__cell'>
-          <div className='c-listUser__thumbnail'>
+          {/*<div className='c-listUser__thumbnail'>
             <img src={user.thumbnail.src} />
-          </div>
+          </div>*/}
           <div className='c-listUser__name'>
             {user.name}
           </div>
         </div>
-        <div className='c-listUser__cell'>
+        <div>
+          mail: {user.mail}
+        </div>
+        <div>
+          password: {user.password}
+        </div>
+        <div>
+          最終ログイン: {user.updated_at}
+        </div>
+        {/*<div className='c-listUser__cell'>
           前回 {user.point.last}pt
         </div>
         <div className='c-listUser__cell'>
@@ -65,7 +62,7 @@ class UserItem extends Component {
         </div>
         <div className='c-listUser__cell'>
           最終来店日 {user.updateAt}
-        </div>
+        </div>*/}
       </li>
     )
   }

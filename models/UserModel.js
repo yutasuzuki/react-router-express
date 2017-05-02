@@ -1,6 +1,12 @@
 import mysql from 'mysql'
 class User {
   constructor() {
+    this.connection = mysql.createConnection({
+      host: 'localhost',
+      user: 'root',
+      password: '',
+      database: 'heaup_db'
+    });
   }
 
   create(user, text, cb) {
@@ -12,30 +18,10 @@ class User {
   }
 
   all(cb) {
-
-    this.connection = mysql.createConnection({
-      connectionLimit: 10,
-      host: 'localhost',
-      user: 'root',
-      password: '',
-      database: 'heaup_db',
-      port: '3306'
-    });
-
     this.connection.query('SELECT * FROM stores', function(err, rows, fields) {
-      console.log(err)
       if (err) throw err;
-      console.log('rows: ', rows[0].solution)
-      console.log('fields: ', rows[0].solution)
+      cb(null, rows)
     });
-    cb(null, [{
-      id: 1,
-      text: 'sample1',
-    },
-    {
-      id: 2,
-      text: 'sample2',
-    }])
   }
 
   allByUser(user, cb) {
