@@ -18,11 +18,11 @@ router.post('/', function(req, res) {
   const updateAt = moment().format('YYYY-MM-DD HH:mm:ss');
   const token = jwt.sign({email, password, updateAt}, SECRET_KEY, {
     expiresIn: 360
-  });
-  req.session.token = token;
+  })
+  req.session.token = token
   auth.siginIn({email, password, token, updateAt} ,function(err, auth) {
     res.json({auth})
-  });
+  })
 })
 
 export default router

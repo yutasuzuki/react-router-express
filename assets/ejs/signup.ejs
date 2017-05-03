@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang='ja'>
+<%- include('./components/_head'); %>
+<body>
+<%- include('./components/_header'); %>
+<main class='main'>
+  <h2>会社情報登録</h2>
+  <div class='c-form'>
+    <form method='post' action='/admin'>
+      <p class='c-form__row'>
+        <label for='js-store-name' class=''>Company</label>
+        <input type='text' name='company' id='js-store-name'>
+      </p>
+      <p class='c-form__row'>
+        <label for='js-store-password' class=''>Zipcode</label>
+        <input type='text' name='zipcode' id='js-store-password'>
+      </p>
+      <p class='c-form__row'>
+        <label for='js-store-password' class=''>Address</label>
+        <input type='text' name='address' id='js-store-password'>
+      </p>
+      <p class='c-form__row'>
+        <label for='js-store-password' class=''>Tel</label>
+        <input type='tel' name='password' id='js-store-password'>
+      </p>
+      <p class='c-form__row'>
+        <label for='js-store-mail' class=''>E-Mail</label>
+        <input type='text' name='email' id='js-store-mail'>
+      </p>
+      <p class='c-form__row'>
+        <label for='js-store-password' class=''>Password</label>
+        <input type='password' name='password' id='js-store-password'>
+      </p>
+      <button class='c-btn c-btn--prime' id='js-signin'>sign up</button>
+    </form>
+  </div>
+</main>
+
+</body>
+</html>

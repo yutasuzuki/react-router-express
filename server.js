@@ -25,7 +25,7 @@ app.use(session({
   saveUninitialized: true,
   resave: false,
   cookie: {
-    maxAge: null
+    maxAge: 10000
   }
 }))
 
@@ -82,6 +82,10 @@ app.get('/',(req, res) => {
 
 app.get('/signin',(req, res) => {
   res.sendFile(`${__dirname}/public/html/signin.html`)
+})
+
+app.get('/signup',(req, res) => {
+  res.sendFile(`${__dirname}/public/html/signup.html`)
 })
 
 // start listen

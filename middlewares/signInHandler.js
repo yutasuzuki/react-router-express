@@ -13,6 +13,8 @@ const signInHandler = (req, res, next) => {
   console.log({email, password, token, updateAt});
   if (email && password) {
     req.session.token = token;
+    req.session.uid = 1
+    console.log('req.session.uid', req.session.uid)
     next()
   } else {
     res.redirect('/')
