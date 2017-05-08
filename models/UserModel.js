@@ -5,7 +5,7 @@ class User {
       host: 'localhost',
       user: 'root',
       password: '',
-      database: 'heaup_db'
+      database: 'palette_db'
     });
   }
 
@@ -18,7 +18,7 @@ class User {
   }
 
   all(cb) {
-    this.connection.query('SELECT * FROM stores', function(err, rows, fields) {
+    this.connection.query('SELECT * FROM users', function(err, rows, fields) {
       if (err) throw err;
       cb(null, rows)
     });

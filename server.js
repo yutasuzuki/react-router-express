@@ -10,7 +10,9 @@ import reducer from './assets/js/admin/reducers'
 import controllers from './controllers'
 import bodyParser from 'body-parser'
 import signInHandler from './middlewares/signInHandler'
+import signUpHandler from './middlewares/signUpHandler'
 import sessionHandler from './middlewares/sessionHandler'
+import moment from 'moment'
 
 const app = express()
 // TODO: configureStoreからimportするように変更
@@ -87,6 +89,7 @@ app.get('/signin',(req, res) => {
 app.get('/signup',(req, res) => {
   res.sendFile(`${__dirname}/public/html/signup.html`)
 })
+app.post('/signup', signUpHandler, adminHandler)
 
 // start listen
 app.listen(3000, () => {
