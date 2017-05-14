@@ -5,7 +5,8 @@ const router = express.Router()
 const user = new UserModel();
 
 router.get('/', function(req, res) {
-  user.all(function (err, user) {
+  console.log(req.session.uid);
+  user.all(req.session.uid, function (err, user) {
     res.json({user})
   })
 })

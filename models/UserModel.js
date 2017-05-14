@@ -17,7 +17,8 @@ class User {
     cb(null, {id, text: 'Very nice example'})
   }
 
-  all(cb) {
+  all(uid, cb) {
+    console.log('userModel.all -> uid', uid)
     this.connection.query('SELECT * FROM users', function(err, rows, fields) {
       if (err) throw err;
       cb(null, rows)

@@ -19,9 +19,17 @@ class AuthModel {
   }
 
   siginUp(data, cb) {
-    const sql = `INSERT INTO companies(name, mail, password, zipcode, address, tel, created_at, updated_at) VALUES ("${data.name}", "${data.email}", "${data.password}", "${data.zipcode}", "${data.address}", "${data.tel}", "${data.createdAt}", "${data.updateAt}");`
-    console.log(sql)
-    this.connection.query(sql, function(err, rows, fields) {
+    const selectSql = `select id from companies where mail = "${data.email}"`
+    console.log('selectSql', selectSql)
+    this.connection.query(selectSql, function(err, rows, fields) {
+      console.log('err', err)
+        console.log('rows.id:', rows.id)
+          console.log('fields', fields)
+    });
+
+    const insetSql = `INSERT INTO companies(name, mail, password, zipcode, address, tel, created_at, updated_at) VALUES ("${data.name}", "${data.email}", "${data.password}", "${data.zipcode}", "${data.address}", "${data.tel}", "${data.createdAt}", "${data.updateAt}");`
+    console.log('insetSql', insetSql)
+    this.connection.query(insetSql, function(err, rows, fields) {
       if (err) throw err;
       cb(null, rows)
     });

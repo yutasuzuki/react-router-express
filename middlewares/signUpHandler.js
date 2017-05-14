@@ -22,6 +22,7 @@ const signUpHandler = (req, res, next) => {
     updateAt
   }
   console.log(data)
+  
   auth.siginUp(data, (err, rows) => {
     console.log('登録OK')
     console.log(rows)
