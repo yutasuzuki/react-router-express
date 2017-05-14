@@ -1,5 +1,7 @@
 import jwt from 'jsonwebtoken'
 import moment from 'moment'
+import AuthModel from '../models/AuthModel'
+const auth = new AuthModel();
 
 const SECRET_KEY = 'CJwYXNzd29yZCI6IjEiLCJpYXQiOjE0OTIzMTU0NzUsIm';
 
@@ -10,18 +12,21 @@ const signInHandler = (req, res, next) => {
   const token = jwt.sign({email, password, updateAt}, SECRET_KEY, {
     expiresIn: 360
   });
-  console.log({email, password, token, updateAt});
-  if (email && password) {
-    req.session.token = token;
-    req.session.uid = 1
-    console.log('req.session.uid', req.session.uid)
-    next()
-  } else {
-    res.redirect('/')
+  const data = {
+    email,
+    password,
+    token,
+    updateAt
   }
-  // auth.siginIn({email, password, token, updateAt} ,function(err, auth) {
-  //   res.json({auth})
-  // });
+  auth.siginIn(data, function(err, response) {
+    if (err) {
+      res.redirect('/')
+    } else {
+      req.session.token = token;
+      req.session.uid = response.data.id
+      next()
+    }
+  })
 }
 
 export default signInHandler

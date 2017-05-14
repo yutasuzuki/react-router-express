@@ -8,7 +8,6 @@ class UserList extends Component {
     this.state = {
       users:[]
     }
-
   }
 
   componentWillMount() {

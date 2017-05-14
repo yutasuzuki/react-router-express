@@ -10,12 +10,27 @@ class AuthModel {
   }
 
   siginIn(data, cb) {
-    if (data.email === 'hoge@example.com' && data.password === '1234') {
-      console.log(`INSERT INTO db_name.tbl_name(token, updateAt) VALUES (${data.token}, ${data.updateAt});`)
-      cb(null, {
-        success: true
-      })
-    }
+    const selectSql = `select id from companies where mail = "${data.email}" and password = "${data.password}"`
+    this.connection.query(selectSql, (err, rows, fields) => {
+      if (!rows.length) {
+        cb(true, {
+          success: false,
+          errorMsg: 'メールアドレス、またはパスワードが正しくありません。'
+        })
+      } else {
+        console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+        const companyId = rows[0].id
+        const updateSql = `update companies set updated_at = "${data.updateAt}" where id = ${companyId};`
+        this.connection.query(updateSql, (err, rows, fields) => {
+          cb(null, {
+            success: true,
+            data: {
+              id: companyId
+            }
+          })
+        })
+      }
+    })
   }
 
   siginUp(data, cb) {
