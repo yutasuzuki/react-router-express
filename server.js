@@ -35,10 +35,6 @@ app.use(session({
 app.use('/api/', controllers)
 app.use(bodyParser.urlencoded({ extended: true }))
 
-// add react routing
-app.post(/^\/admin/, signInHandler, adminHandler)
-app.get(/^\/admin/, sessionHandler, adminHandler)
-
 function adminHandler (req, res) {
   const context = {}
   const elem = ReactDOMServer.renderToString(
@@ -81,6 +77,10 @@ const createLayout = function(elem, preloadedState) {
 app.get('/',(req, res) => {
   res.sendFile(`${__dirname}/public/html/index.html`)
 })
+
+// add react routing
+app.post(/^\/admin/, signInHandler, adminHandler)
+app.get(/^\/admin/, sessionHandler, adminHandler)
 
 app.get('/signin',(req, res) => {
   res.sendFile(`${__dirname}/public/html/signin.html`)

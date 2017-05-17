@@ -20,7 +20,7 @@ const signInHandler = (req, res, next) => {
   }
   auth.siginIn(data, function(err, response) {
     if (err) {
-      res.redirect('/')
+      res.redirect('/signin')
     } else {
       req.session.token = token;
       req.session.uid = response.data.id
