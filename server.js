@@ -12,11 +12,12 @@ import bodyParser from 'body-parser'
 import signInHandler from './middlewares/signInHandler'
 import signUpHandler from './middlewares/signUpHandler'
 import sessionHandler from './middlewares/sessionHandler'
+import configureStore from './assets/js/admin/configureStore'
 import moment from 'moment'
 
 const app = express()
 // TODO: configureStoreからimportするように変更
-const store = createStore(reducer, {})
+const store = configureStore({})
 
 // add static path
 app.use(express.static('public'))
@@ -27,7 +28,7 @@ app.use(session({
   saveUninitialized: true,
   resave: false,
   cookie: {
-    maxAge: 10000
+    maxAge: 10000000
   }
 }))
 
@@ -63,10 +64,10 @@ const createLayout = function(elem, preloadedState) {
     // WARNING: See the following for security issues around embedding JSON in HTML:
     // http://redux.js.org/docs/recipes/ServerRendering.html#security-considerations
     window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(/</g, '\\u003c')};
-    (function(){
-      var ele = document.getElementById('js-script');
-      ele.parentNode.removeChild(ele);
-    }());
+    // (function(){
+    //   var ele = document.getElementById('js-script');
+    //   ele.parentNode.removeChild(ele);
+    // }());
     <\/script>
     <script src='\/js\/app.js'><\/script>
   <\/body>

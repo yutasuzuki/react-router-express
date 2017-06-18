@@ -27,4 +27,8 @@ textarea {
   background: none;
   border: 0;
   appearance: none;
+
+  &:autofill {
+    box-shadow: 0 0 0 1000px #fff inset;
+  }
 }

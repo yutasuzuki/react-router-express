@@ -1,17 +1,16 @@
 import { SIGN_IN, SIGN_OUT } from '../actions/auth'
 
-const auth = (state = { isAuthenticated: false }, action) => {
+const auth = (state = {}, action) => {
   switch (action.type) {
     case SIGN_IN:
-      console.log(state)
+      console.log('action.payload.data', action.payload.data)
+      console.log('state', state)
       return Object.assign({}, state, {
-        isAuthenticated: true
+        uid: action.payload.data.uid,
       })
       break;
     case SIGN_OUT:
-      return Object.assign({}, state, {
-        isAuthenticated: false
-      })
+      return Object.assign({}, state, {})
       break;
     default:
       return state
