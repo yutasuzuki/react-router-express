@@ -2,10 +2,10 @@ import 'babel-polyfill'
 import { createAction } from 'redux-actions'
 import { takeEvery } from "redux-saga"
 import { put } from 'redux-saga/effects'
-import { signIn } from '../actions/auth'
+import { signIn, SIGN_IN } from '../actions/auth'
 import axios from 'axios'
 
-export const fetchAuth = () => {
+function* fetchAuth() {
   // return fetch(`/api/signIn`).then((response) => {
   //   return response.json().then((json) => {
   //     console.log(json)
@@ -15,7 +15,12 @@ export const fetchAuth = () => {
   return axios.get(`/api/signIn`).then(responce => responce);
 }
 
-export default function* rootSaga() {
+function* signin() {
   const authState = yield fetchAuth()
+  console.log('authState', authState)
   yield put(signIn(authState))
+}
+
+export default function * rootSaga() {
+    yield * takeEvery(SIGN_IN, signin);
 }

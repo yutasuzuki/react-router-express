@@ -26,7 +26,6 @@ router.post('/', function(req, res) {
 })
 
 router.get('/', function(req, res) {
-  console.log(req)
   console.log(req.session.uid);
   res.json({uid: req.session.uid})
 })

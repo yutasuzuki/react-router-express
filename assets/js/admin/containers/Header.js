@@ -20,7 +20,8 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(incrementAsync())
     },
     onGetAllUser: () => {
-      fetch(`/api/users/12432`).then((response) => {
+      dispatch('SIGN_IN');
+      fetch(`/api/users`).then((response) => {
         response.json().then((json) => {
           console.log(json)
           dispatch(getAllUsers(json))
