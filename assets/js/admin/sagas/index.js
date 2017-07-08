@@ -6,21 +6,21 @@ import { signIn, SIGN_IN } from '../actions/auth'
 import axios from 'axios'
 
 function* fetchAuth() {
-  // return fetch(`/api/signIn`).then((response) => {
-  //   return response.json().then((json) => {
-  //     console.log(json)
-  //     return json
-  //   })
-  // })
-  return axios.get(`/api/signIn`).then(responce => responce);
+  return fetch(`/api/signIn`).then((response) => {
+    return response.json().then((json) => {
+      console.log('signIn', json)
+      return json
+    })
+  })
+  // return axios.get(`/api/signIn`).then(responce => responce);
 }
 
-function* signin() {
+export default function* signin() {
   const authState = yield fetchAuth()
   console.log('authState', authState)
   yield put(signIn(authState))
 }
 
-export default function * rootSaga() {
-    yield * takeEvery(SIGN_IN, signin);
-}
+// export default function* rootSaga() {
+//     yield * takeEvery(SIGN_IN, signin);
+// }

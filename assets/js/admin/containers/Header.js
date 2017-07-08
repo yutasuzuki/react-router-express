@@ -10,23 +10,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onSubmitSignIn: () => {
-      dispatch(signIn())
-    },
-    onSubmitSignOut: () => {
-      dispatch(signOut())
-    },
-    onClickModal: () => {
-      dispatch(incrementAsync())
-    },
     onGetAllUser: () => {
-      dispatch('SIGN_IN');
-      fetch(`/api/users`).then((response) => {
-        response.json().then((json) => {
-          console.log(json)
-          dispatch(getAllUsers(json))
-        })
-      })
+      dispatch(signIn());
     }
   }
 }

@@ -23,7 +23,7 @@ const signInHandler = (req, res, next) => {
       res.redirect('/signin')
     } else {
       req.session.token = token;
-      req.session.uid = response.data.id
+      req.session.cid = response.data.id
       next()
     }
   })

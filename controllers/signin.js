@@ -26,8 +26,8 @@ router.post('/', function(req, res) {
 })
 
 router.get('/', function(req, res) {
-  console.log(req.session.uid);
-  res.json({uid: req.session.uid})
+  console.log(req.session.cid);
+  res.json({cid: req.session.cid})
 })
 
 export default router

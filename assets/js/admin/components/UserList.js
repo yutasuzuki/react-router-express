@@ -8,6 +8,7 @@ class UserList extends Component {
     this.state = {
       users:[]
     }
+    console.log(props)
   }
 
   componentWillMount() {
@@ -28,8 +29,7 @@ class UserList extends Component {
 
 class UserItem extends Component {
   constructor(props) {
-    super(props);
-    console.log(props)
+    super(props)
   }
 
   render() {

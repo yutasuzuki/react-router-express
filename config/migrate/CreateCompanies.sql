@@ -1,0 +1,14 @@
+-- +------------+-------------+------+-----+-------------------+-----------------------------+
+-- | Field      | Type        | Null | Key | Default           | Extra                       |
+-- +------------+-------------+------+-----+-------------------+-----------------------------+
+-- | id         | int(11)     | NO   | PRI | NULL              | auto_increment              |
+-- | name       | varchar(64) | NO   |     | NULL              |                             |
+-- | mail       | varchar(64) | YES  |     | NULL              |                             |
+-- | password   | varchar(32) | YES  |     | NULL              |                             |
+-- | zipcode    | varchar(8)  | YES  |     | NULL              |                             |
+-- | address    | varchar(64) | YES  |     | NULL              |                             |
+-- | tel        | varchar(32) | YES  |     | NULL              |                             |
+-- | created_at | datetime    | NO   |     | CURRENT_TIMESTAMP |                             |
+-- | updated_at | datetime    | NO   |     | CURRENT_TIMESTAMP | on update CURRENT_TIMESTAMP |
+-- | deleted_at | datetime    | YES  |     | NULL              |                             |
+-- +------------+-------------+------+-----+-------------------+-----------------------------+

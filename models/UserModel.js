@@ -17,9 +17,10 @@ class User {
     cb(null, {id, text: 'Very nice example'})
   }
 
-  all(uid, cb) {
-    console.log('userModel.all -> uid', uid)
-    this.connection.query('SELECT * FROM users', function(err, rows, fields) {
+  all(cid, cb) {
+    const sql = `SELECT user_point.user_id AS id, users.name AS name, sum(user_point.point) AS point FROM user_point INNER JOIN users ON user_point.user_id=users.id WHERE user_point.company_id=${cid} GROUP BY user_point.user_id;`;
+    console.log(sql);
+    this.connection.query(sql, function(err, rows, fields) {
       if (err) throw err;
       cb(null, rows)
     });

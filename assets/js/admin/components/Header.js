@@ -7,6 +7,10 @@ class Header extends Component {
     super(props);
   }
 
+  componentWillMount() {
+    // this.props.onGetAllUser();
+  }
+
   render() {
     return (
       <header className={'header'}>
