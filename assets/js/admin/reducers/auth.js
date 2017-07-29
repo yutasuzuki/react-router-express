@@ -3,10 +3,8 @@ import { SIGN_IN, SIGN_OUT } from '../actions/auth'
 const auth = (state = {}, action) => {
   switch (action.type) {
     case SIGN_IN:
-      console.log('action', action)
-      console.log('state', state)
       return Object.assign({}, state, {
-        uid: action.payload.data.uid,
+        cid: action.data.cid,
       })
       break;
     case SIGN_OUT:

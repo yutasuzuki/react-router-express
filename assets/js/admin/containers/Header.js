@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { getAllUsers, incrementAsync } from '../actions/modalAction'
 import { signIn, signOut } from '../actions/auth'
 import HeaderComponent from '../components/Header'
+import axios from 'axios'
 
 const mapStateToProps = (state) => {
   return state
@@ -10,8 +11,10 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onGetAllUser: () => {
-      dispatch(signIn());
+    getAuth: () => {
+      axios.get('/api/signin').then((res) => {
+        dispatch({type: 'SIGN_IN', data: res.data});
+      })
     }
   }
 }

@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom'
 import UserList from '../components/UserList'
 
 const User = () => (
-  <div>
-    <h1>User!!</h1>
+  <div className={'c-card'}>
+    <h1 className={'c-heading-page'}>User!!</h1>
     <ul>
       <UserList />
     </ul>

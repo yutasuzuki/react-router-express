@@ -1,0 +1,10 @@
+.u-grid {
+  display: flex;
+  flex: 1;
+
+  @for $i from 5 through 100 {
+    .u-col__#{$i} {
+      width: 1% * $i;
+    }
+  }
+}

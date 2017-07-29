@@ -5,10 +5,11 @@ import axios from 'axios'
 class Header extends Component {
   constructor(props) {
     super(props);
+    this.props = props
   }
 
   componentWillMount() {
-    // this.props.onGetAllUser();
+    this.props.getAuth();
   }
 
   render() {

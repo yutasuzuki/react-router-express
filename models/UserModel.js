@@ -1,4 +1,5 @@
 import mysql from 'mysql'
+
 class User {
   constructor() {
     this.connection = mysql.createConnection({
@@ -18,8 +19,22 @@ class User {
   }
 
   all(cid, cb) {
-    const sql = `SELECT user_point.user_id AS id, users.name AS name, sum(user_point.point) AS point FROM user_point INNER JOIN users ON user_point.user_id=users.id WHERE user_point.company_id=${cid} GROUP BY user_point.user_id;`;
-    console.log(sql);
+    const sql = `SELECT 
+      user_point.user_id AS id, 
+      users.name AS name, 
+      sum(user_point.point) AS point, 
+      user_point.updated_at AS updated 
+    FROM 
+      user_point 
+    INNER JOIN 
+      users 
+      ON 
+        user_point.user_id=users.id 
+    WHERE 
+      user_point.company_id=${cid} 
+    GROUP BY 
+      user_point.user_id, 
+      user_point.updated_at;`;
     this.connection.query(sql, function(err, rows, fields) {
       if (err) throw err;
       cb(null, rows)

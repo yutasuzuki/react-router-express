@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+import moment from 'moment'
 
 class UserList extends Component {
   constructor(props) {
@@ -19,9 +20,22 @@ class UserList extends Component {
 
   render() {
     return (
-      <ul>
-        {this.state.users.map((user, i) => <UserItem key={i} user={user}/>)}
-      </ul>
+      <div>
+        <ul className={'u-grid'}>
+          <li className={'u-col__20'}>
+            NAME
+          </li>
+          <li className={'u-col__20'}>
+            POINT
+          </li>
+          <li className={'u-col__20'}>
+            UPDATED
+          </li>
+        </ul>
+        <ul>
+          {this.state.users.map((user, i) => <UserItem key={i} user={user}/>)}
+        </ul>
+      </div>
     )
   }
 }
@@ -35,33 +49,19 @@ class UserItem extends Component {
   render() {
     const user = this.props.user
     return (
-      <li className='c-listUser'>
-        <div className='c-listUser__cell'>
-          {/*<div className='c-listUser__thumbnail'>
-            <img src={user.thumbnail.src} />
-          </div>*/}
-          <div className='c-listUser__name'>
+      <li className={'c-listUser u-grid'}>
+        <div className={'c-listUser__cell u-col__20'}>
+          <div className={'c-listUser__name'}>
             {user.name}
           </div>
         </div>
-        <div>
-          mail: {user.mail}
+        <div className={'u-col__20'}>
+          point: {user.point}
         </div>
-        <div>
-          password: {user.password}
+        <div className={'u-col__20'}>
+          最終ログイン: 
+          {moment(user.updated).format('YYYY-MM-DD HH:mm:ss dddd')}
         </div>
-        <div>
-          最終ログイン: {user.updated_at}
-        </div>
-        {/*<div className='c-listUser__cell'>
-          前回 {user.point.last}pt
-        </div>
-        <div className='c-listUser__cell'>
-          合計 {user.point.total}pt
-        </div>
-        <div className='c-listUser__cell'>
-          最終来店日 {user.updateAt}
-        </div>*/}
       </li>
     )
   }
